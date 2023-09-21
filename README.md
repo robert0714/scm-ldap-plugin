@@ -131,6 +131,10 @@ A quick look at the files and directories you'll see in an SCM-Manager project.
 
 14. **`yarn.lock`**: This is the ui dependency configuration.
 
+
+## Manual Installation
+Plugins are packaged as ``smp`` files. To install a plugin using such a file, simply copy it to the ``plugins`` folder in your scm home directory (you should find directories for other plugins there, for example ``scm-ldap-plugin``). The server will find these files on startup and finish the installation. Keep in mind though, that manual installation might have some risks, because the server cannot check for missing dependencies to other plugins or other requirements beforehand, and therefore the startup may fail. So keep an eye on your log if you choose this way.
+
 ## Need help?
 
 Looking for more guidance? Full documentation lives on our [homepage](https://scm-manager.org/docs/) or the dedicated pages for our [plugins](https://scm-manager.org/plugins/). Do you have further ideas or need support?
