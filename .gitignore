@@ -306,3 +306,10 @@ gradle-app.setting
 
 *.iml
 .idea
+
+
+.classpath
+.project
+.settings/
+bin/
+

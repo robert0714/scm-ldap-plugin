@@ -42,6 +42,7 @@ import javax.net.ssl.SSLContext;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Optional;
 
 //~--- JDK imports ------------------------------------------------------------
 
@@ -65,14 +66,16 @@ class LdapConnection implements Closeable {
   private static final String PROPERTY_SSL_SOCKET_FACTORY = "java.naming.ldap.factory.socket";
 
   /**
-   * connect timeout: 5sec
+   * connect timeout: 2min
    */
-  private static final String TIMEOUT_CONNECT = "5000";
+  private static final String TIMEOUT_CONNECT = Optional.ofNullable(System.getenv("TIMEOUT_CONNECT"))
+				.orElse(Optional.ofNullable(System.getProperty("TIMEOUT_CONNECT")).orElse("120000"));
 
   /**
-   * read timeout: 2min
+   * read timeout: 6min
    */
-  private static final String TIMEOUT_READ = "120000";
+  private static final String TIMEOUT_READ = Optional.ofNullable(System.getenv("TIMEOUT_READ"))
+				.orElse(Optional.ofNullable(System.getProperty("TIMEOUT_READ")).orElse("720000")); ;
 
   /**
    * the logger for LDAPConnection
